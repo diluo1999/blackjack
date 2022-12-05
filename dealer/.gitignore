@@ -1,0 +1,44 @@
+# CS50 recommended .gitignore file.
+# Copy this file into the top-level folder of any new git repository,
+# with name .gitignore (note the leading dot!), then extend it with
+# repo-specific files to be ignored (such as the name of the compiled binary).
+#
+# for documentation on gitignore files, see
+#   https://git-scm.com/docs/gitignore
+
+# NFS files
+.nfs*
+
+# core dumps
+core
+
+# Object files and libraries
+*.o
+*.a
+a.out
+
+# Emacs backup and scratch files
+*~
+\#*\#
+.\#*
+
+# debugger symbols
+*.dSYM
+
+# MacOS stuff
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+._*
+.Spotlight-V*
+.Trashes
+
+###########################################################################
+# custom additions below here; see also .gitignore files in subdirectories.
+dealer
+dealertest_player
+test.out
+player.out
+dealer.out
+ncdealer

@@ -1,0 +1,555 @@
+ml () {  module ml "$@"
+}
+module () {  _module_raw "$@" 2>&1
+}
+_module_raw () {  eval `/usr/bin/tclsh8.6 /usr/lib/x86_64-linux-gnu/modulecmd.tcl bash "$@"`;
+ _mlstatus=$?;
+ return $_mlstatus
+}
+# !/bin/bash
+#
+# testing.sh -- testing file for dealer
+#
+# usage: bash -v testing.sh &> testing.out 
+#
+# Team 12, CS50, Fall 2022
+
+# Make player output file
+rm -rf player.out ; touch player.out
+
+# Testing with no arguments
+./dealer
+usage: ./dealer <number of games> <port>
+# Check error code
+echo $?
+1
+
+# Testing with one arguments
+./dealer Team12
+usage: ./dealer <number of games> <port>
+# Check error code
+echo $?
+1
+
+# Testing with too many arguments
+./dealer Team12 Ipaddress bad
+usage: ./dealer <number of games> <port>
+# Check error code
+echo $?
+1
+
+# Testing with bad port
+./dealer 1 port
+Incorrect usage. Port must be an integer.
+# Check error code
+echo $?
+4
+
+# Testing with bad port
+./dealer 1 0
+Incorrect usage. Port is invalid.
+# Check error code
+echo $?
+5
+
+# Testing with non-int number of games
+./dealer one 8092
+Incorrect usage. Number of games must be an integer.
+# Check error code
+echo $?
+2
+
+# Testing with 0 number of games
+./dealer 0 8092
+Incorrect usage. Number of games must be at least 1.
+# Check error code
+echo $?
+3
+
+# Testing with player
+./dealer 50 8092 &
+
+IPADDR=$(curl ifconfig.me)
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    14  100    14    0     0    232      0 --:--:-- --:--:-- --:--:--   237
+
+cd ../player ; ./player Name $IPADDR 8092 > ../dealer/player.out 2>&1 
+Dealer is connected with player
+ Connected socket: 4
+ Listening socket: 3
+
+Name joined the game!
+
+dealer: sent BEGIN 1
+dealer: sent CARD Jack of Clubs
+dealer: sent CARD Nine of Spades
+dealer: sent DEALER Nine of Hearts
+dealer: sent DECISION
+dealer: received STAND from player
+Name's result: RESULT LOOSE
+---------------
+dealer: sent BEGIN 2
+dealer: sent CARD Eight of Diamonds
+dealer: sent CARD Seven of Hearts
+dealer: sent DEALER Jack of Hearts
+dealer: sent DECISION
+dealer: received STAND from player
+Name's result: RESULT WIN
+---------------
+dealer: sent BEGIN 3
+dealer: sent CARD Five of Hearts
+dealer: sent CARD Ten of Diamonds
+dealer: sent DEALER Ten of Spades
+dealer: sent DECISION
+dealer: received STAND from player
+Name's result: RESULT WIN
+---------------
+dealer: sent BEGIN 4
+dealer: sent CARD Seven of Diamonds
+dealer: sent CARD Jack of Diamonds
+dealer: sent DEALER Six of Spades
+dealer: sent DECISION
+dealer: received STAND from player
+Name's result: RESULT WIN
+---------------
+dealer: sent BEGIN 5
+dealer: sent CARD Eight of Hearts
+dealer: sent CARD Ten of Hearts
+dealer: sent DEALER Queen of Clubs
+dealer: sent DECISION
+dealer: received STAND from player
+Name's result: RESULT WIN
+---------------
+dealer: sent BEGIN 6
+dealer: sent CARD Three of Spades
+dealer: sent CARD Ten of Clubs
+dealer: sent DEALER Ten of Diamonds
+dealer: sent DECISION
+dealer: received HIT from player
+dealer: sent CARD Nine of Spades
+Name's result: RESULT BUST
+---------------
+dealer: sent BEGIN 7
+dealer: sent CARD Five of Clubs
+dealer: sent CARD Ten of Diamonds
+dealer: sent DEALER Ace of Spades
+dealer: sent DECISION
+dealer: received HIT from player
+dealer: sent CARD Nine of Diamonds
+Name's result: RESULT BUST
+---------------
+dealer: sent BEGIN 8
+dealer: sent CARD Jack of Hearts
+dealer: sent CARD Queen of Hearts
+dealer: sent DEALER Six of Clubs
+dealer: sent DECISION
+dealer: received STAND from player
+Name's result: RESULT WIN
+---------------
+dealer: sent BEGIN 9
+dealer: sent CARD Five of Hearts
+dealer: sent CARD Six of Diamonds
+dealer: sent DEALER Jack of Hearts
+dealer: sent DECISION
+dealer: received HIT from player
+dealer: sent CARD Ace of Clubs
+dealer: sent DECISION
+dealer: received HIT from player
+dealer: sent CARD Queen of Clubs
+Name's result: RESULT BUST
+---------------
+dealer: sent BEGIN 10
+dealer: sent CARD Two of Clubs
+dealer: sent CARD Jack of Spades
+dealer: sent DEALER Three of Hearts
+dealer: sent DECISION
+dealer: received STAND from player
+Name's result: RESULT LOOSE
+---------------
+dealer: sent BEGIN 11
+dealer: sent CARD Three of Clubs
+dealer: sent CARD Three of Diamonds
+dealer: sent DEALER Ten of Clubs
+dealer: sent DECISION
+dealer: received STAND from player
+Name's result: RESULT WIN
+---------------
+dealer: sent BEGIN 12
+dealer: sent CARD Nine of Hearts
+dealer: sent CARD Ten of Diamonds
+dealer: sent DEALER Ten of Spades
+dealer: sent DECISION
+dealer: received STAND from player
+Name's result: RESULT WIN
+---------------
+dealer: sent BEGIN 13
+dealer: sent CARD Three of Clubs
+dealer: sent CARD Two of Clubs
+dealer: sent DEALER Queen of Clubs
+dealer: sent DECISION
+dealer: received HIT from player
+dealer: sent CARD Seven of Diamonds
+dealer: sent DECISION
+dealer: received HIT from player
+dealer: sent CARD Five of Clubs
+dealer: sent DECISION
+dealer: received STAND from player
+Name's result: RESULT LOOSE
+---------------
+dealer: sent BEGIN 14
+dealer: sent CARD Six of Clubs
+dealer: sent CARD Ace of Spades
+dealer: sent DEALER Six of Diamonds
+dealer: sent DECISION
+dealer: received STAND from player
+Name's result: RESULT LOOSE
+---------------
+dealer: sent BEGIN 15
+dealer: sent CARD Four of Clubs
+dealer: sent CARD Six of Diamonds
+dealer: sent DEALER Ace of Clubs
+dealer: sent DECISION
+dealer: received HIT from player
+dealer: sent CARD Two of Spades
+dealer: sent DECISION
+dealer: received HIT from player
+dealer: sent CARD Nine of Clubs
+dealer: sent DECISION
+dealer: received STAND from player
+Name's result: RESULT WIN
+---------------
+dealer: sent BEGIN 16
+dealer: sent CARD Three of Hearts
+dealer: sent CARD Seven of Diamonds
+dealer: sent DEALER Two of Hearts
+dealer: sent DECISION
+dealer: received HIT from player
+dealer: sent CARD Eight of Spades
+dealer: sent DECISION
+dealer: received HIT from player
+dealer: sent CARD Jack of Spades
+Name's result: RESULT BUST
+---------------
+dealer: sent BEGIN 17
+dealer: sent CARD Nine of Clubs
+dealer: sent CARD Queen of Diamonds
+dealer: sent DEALER Six of Spades
+dealer: sent DECISION
+dealer: received STAND from player
+Name's result: RESULT LOOSE
+---------------
+dealer: sent BEGIN 18
+dealer: sent CARD Two of Spades
+dealer: sent CARD Three of Diamonds
+dealer: sent DEALER Four of Diamonds
+dealer: sent DECISION
+dealer: received STAND from player
+Name's result: RESULT WIN
+---------------
+dealer: sent BEGIN 19
+dealer: sent CARD Two of Hearts
+dealer: sent CARD King of Diamonds
+dealer: sent DEALER Four of Hearts
+dealer: sent DECISION
+dealer: received STAND from player
+Name's result: RESULT WIN
+---------------
+dealer: sent BEGIN 20
+dealer: sent CARD Seven of Clubs
+dealer: sent CARD Eight of Hearts
+dealer: sent DEALER Five of Clubs
+dealer: sent DECISION
+dealer: received STAND from player
+Name's result: RESULT LOOSE
+---------------
+dealer: sent BEGIN 21
+dealer: sent CARD Eight of Spades
+dealer: sent CARD Ten of Clubs
+dealer: sent DEALER Queen of Clubs
+dealer: sent DECISION
+dealer: received STAND from player
+Name's result: RESULT WIN
+---------------
+dealer: sent BEGIN 22
+dealer: sent CARD Four of Diamonds
+dealer: sent CARD Four of Clubs
+dealer: sent DEALER Seven of Clubs
+dealer: sent DECISION
+dealer: received HIT from player
+dealer: sent CARD Three of Diamonds
+dealer: sent DECISION
+dealer: received HIT from player
+dealer: sent CARD Ace of Clubs
+dealer: sent DECISION
+dealer: received HIT from player
+dealer: sent CARD Nine of Diamonds
+dealer: sent DECISION
+dealer: received STAND from player
+Name's result: RESULT WIN
+---------------
+dealer: sent BEGIN 23
+dealer: sent CARD Five of Clubs
+dealer: sent CARD Ten of Clubs
+dealer: sent DEALER Four of Hearts
+dealer: sent DECISION
+dealer: received STAND from player
+Name's result: RESULT WIN
+---------------
+dealer: sent BEGIN 24
+dealer: sent CARD Seven of Diamonds
+dealer: sent CARD Four of Hearts
+dealer: sent DEALER Five of Diamonds
+dealer: sent DECISION
+dealer: received HIT from player
+dealer: sent CARD Nine of Spades
+dealer: sent DECISION
+dealer: received STAND from player
+Name's result: RESULT WIN
+---------------
+dealer: sent BEGIN 25
+dealer: sent CARD Queen of Clubs
+dealer: sent CARD Ten of Clubs
+dealer: sent DEALER Four of Clubs
+dealer: sent DECISION
+dealer: received STAND from player
+Name's result: RESULT WIN
+---------------
+dealer: sent BEGIN 26
+dealer: sent CARD Jack of Diamonds
+dealer: sent CARD Eight of Hearts
+dealer: sent DEALER Ten of Diamonds
+dealer: sent DECISION
+dealer: received STAND from player
+Name's result: RESULT LOOSE
+---------------
+dealer: sent BEGIN 27
+dealer: sent CARD Two of Hearts
+dealer: sent CARD Two of Diamonds
+dealer: sent DEALER Ten of Clubs
+dealer: sent DECISION
+dealer: received HIT from player
+dealer: sent CARD Six of Spades
+dealer: sent DECISION
+dealer: received HIT from player
+dealer: sent CARD King of Spades
+dealer: sent DECISION
+dealer: received STAND from player
+Name's result: RESULT WIN
+---------------
+dealer: sent BEGIN 28
+dealer: sent CARD Ten of Diamonds
+dealer: sent CARD Four of Hearts
+dealer: sent DEALER Three of Diamonds
+dealer: sent DECISION
+dealer: received STAND from player
+Name's result: RESULT WIN
+---------------
+dealer: sent BEGIN 29
+dealer: sent CARD Queen of Spades
+dealer: sent CARD Seven of Clubs
+dealer: sent DEALER Eight of Hearts
+dealer: sent DECISION
+dealer: received STAND from player
+Name's result: RESULT LOOSE
+---------------
+dealer: sent BEGIN 30
+dealer: sent CARD Four of Clubs
+dealer: sent CARD Jack of Spades
+dealer: sent DEALER Four of Hearts
+dealer: sent DECISION
+dealer: received STAND from player
+Name's result: RESULT WIN
+---------------
+dealer: sent BEGIN 31
+dealer: sent CARD Nine of Spades
+dealer: sent CARD Ace of Diamonds
+dealer: sent DEALER Jack of Hearts
+dealer: sent DECISION
+dealer: received STAND from player
+Name's result: RESULT PUSH
+---------------
+dealer: sent BEGIN 32
+dealer: sent CARD Six of Clubs
+dealer: sent CARD Seven of Hearts
+dealer: sent DEALER Jack of Clubs
+dealer: sent DECISION
+dealer: received HIT from player
+dealer: sent CARD Four of Diamonds
+dealer: sent DECISION
+dealer: received STAND from player
+Name's result: RESULT LOOSE
+---------------
+dealer: sent BEGIN 33
+dealer: sent CARD Seven of Spades
+dealer: sent CARD Ten of Spades
+dealer: sent DEALER Five of Spades
+dealer: sent DECISION
+dealer: received STAND from player
+Name's result: RESULT WIN
+---------------
+dealer: sent BEGIN 34
+dealer: sent CARD Queen of Spades
+dealer: sent CARD Nine of Hearts
+dealer: sent DEALER King of Hearts
+dealer: sent DECISION
+dealer: received STAND from player
+Name's result: RESULT LOOSE
+---------------
+dealer: sent BEGIN 35
+dealer: sent CARD Eight of Hearts
+dealer: sent CARD Ace of Hearts
+dealer: sent DEALER Four of Spades
+dealer: sent DECISION
+dealer: received STAND from player
+Name's result: RESULT PUSH
+---------------
+dealer: sent BEGIN 36
+dealer: sent CARD Jack of Diamonds
+dealer: sent CARD Ten of Spades
+dealer: sent DEALER Six of Hearts
+dealer: sent DECISION
+dealer: received STAND from player
+Name's result: RESULT LOOSE
+---------------
+dealer: sent BEGIN 37
+dealer: sent CARD King of Spades
+dealer: sent CARD King of Clubs
+dealer: sent DEALER Jack of Clubs
+dealer: sent DECISION
+dealer: received STAND from player
+Name's result: RESULT LOOSE
+---------------
+dealer: sent BEGIN 38
+dealer: sent CARD Eight of Diamonds
+dealer: sent CARD Nine of Diamonds
+dealer: sent DEALER Ten of Clubs
+dealer: sent DECISION
+dealer: received STAND from player
+Name's result: RESULT LOOSE
+---------------
+dealer: sent BEGIN 39
+dealer: sent CARD Three of Clubs
+dealer: sent CARD Four of Clubs
+dealer: sent DEALER Ace of Spades
+dealer: sent DECISION
+dealer: received HIT from player
+dealer: sent CARD Three of Hearts
+dealer: sent DECISION
+dealer: received HIT from player
+dealer: sent CARD Six of Spades
+dealer: sent DECISION
+dealer: received STAND from player
+Name's result: RESULT LOOSE
+---------------
+dealer: sent BEGIN 40
+dealer: sent CARD Seven of Clubs
+dealer: sent CARD Three of Clubs
+dealer: sent DEALER Queen of Spades
+dealer: sent DECISION
+dealer: received HIT from player
+dealer: sent CARD Three of Hearts
+dealer: sent DECISION
+dealer: received HIT from player
+dealer: sent CARD Four of Diamonds
+dealer: sent DECISION
+dealer: received STAND from player
+Name's result: RESULT PUSH
+---------------
+dealer: sent BEGIN 41
+dealer: sent CARD King of Clubs
+dealer: sent CARD King of Spades
+dealer: sent DEALER Jack of Clubs
+dealer: sent DECISION
+dealer: received STAND from player
+Name's result: RESULT WIN
+---------------
+dealer: sent BEGIN 42
+dealer: sent CARD Queen of Hearts
+dealer: sent CARD Eight of Hearts
+dealer: sent DEALER Queen of Spades
+dealer: sent DECISION
+dealer: received STAND from player
+Name's result: RESULT LOOSE
+---------------
+dealer: sent BEGIN 43
+dealer: sent CARD Three of Diamonds
+dealer: sent CARD King of Clubs
+dealer: sent DEALER King of Diamonds
+dealer: sent DECISION
+dealer: received HIT from player
+dealer: sent CARD Six of Spades
+dealer: sent DECISION
+dealer: received STAND from player
+Name's result: RESULT WIN
+---------------
+dealer: sent BEGIN 44
+dealer: sent CARD Three of Diamonds
+dealer: sent CARD Two of Hearts
+dealer: sent DEALER Ten of Hearts
+dealer: sent DECISION
+dealer: received HIT from player
+dealer: sent CARD Four of Clubs
+dealer: sent DECISION
+dealer: received HIT from player
+dealer: sent CARD Ten of Diamonds
+dealer: sent DECISION
+dealer: received STAND from player
+Name's result: RESULT LOOSE
+---------------
+dealer: sent BEGIN 45
+dealer: sent CARD Jack of Clubs
+dealer: sent CARD Nine of Spades
+dealer: sent DEALER Three of Spades
+dealer: sent DECISION
+dealer: received STAND from player
+Name's result: RESULT WIN
+---------------
+dealer: sent BEGIN 46
+dealer: sent CARD Jack of Diamonds
+dealer: sent CARD Ace of Clubs
+dealer: sent DEALER Ten of Diamonds
+dealer: sent DECISION
+dealer: received STAND from player
+Name's result: RESULT WIN
+---------------
+dealer: sent BEGIN 47
+dealer: sent CARD Three of Spades
+dealer: sent CARD Queen of Spades
+dealer: sent DEALER Seven of Diamonds
+dealer: sent DECISION
+dealer: received HIT from player
+dealer: sent CARD Five of Spades
+dealer: sent DECISION
+dealer: received STAND from player
+Name's result: RESULT LOOSE
+---------------
+dealer: sent BEGIN 48
+dealer: sent CARD Ace of Hearts
+dealer: sent CARD Ten of Hearts
+dealer: sent DEALER Ace of Spades
+dealer: sent DECISION
+dealer: received STAND from player
+Name's result: RESULT WIN
+---------------
+dealer: sent BEGIN 49
+dealer: sent CARD Queen of Hearts
+dealer: sent CARD Queen of Diamonds
+dealer: sent DEALER Six of Hearts
+dealer: sent DECISION
+dealer: received STAND from player
+Name's result: RESULT LOOSE
+---------------
+dealer: sent BEGIN 50
+dealer: sent CARD Nine of Diamonds
+dealer: sent CARD Nine of Clubs
+dealer: sent DEALER Three of Diamonds
+dealer: sent DECISION
+dealer: received STAND from player
+Name's result: RESULT LOOSE
+---------------
+
+# Check status code
+echo $?
+0
+

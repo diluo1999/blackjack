@@ -1,0 +1,156 @@
+ml () {  module ml "$@"
+}
+module () {  _module_raw "$@" 2>&1
+}
+_module_raw () {  eval `/usr/bin/tclsh8.6 /usr/lib/x86_64-linux-gnu/modulecmd.tcl bash "$@"`;
+ _mlstatus=$?;
+ return $_mlstatus
+}
+# !/bin/bash
+#
+# testing.sh -- testing file for player
+#
+# usage: bash -v testing.sh &> testing.out 
+#
+# Team 12, CS50, Fall 2022
+
+# Make dealer output file
+rm -rf dealer.out ; touch dealer.out
+
+# Testing with no arguments
+./player
+Not enough arguments. Usage: player <player name> <server’s IP address> <PORT number>
+
+# Testing with one arguments
+./player Team12
+Not enough arguments. Usage: player <player name> <server’s IP address> <PORT number>
+
+# Testing with two arguments
+./player Team12 Ipaddress
+Not enough arguments. Usage: player <player name> <server’s IP address> <PORT number>
+
+# Testing with too many arguments
+./player Team12 Ipaddress bad bad
+Not enough arguments. Usage: player <player name> <server’s IP address> <PORT number>
+
+# Testing with bad port
+./player whatevername whateverip 0
+PORT passed is invalid
+
+# Testing with dealer
+cd ../dealer ; ./dealer 50 8092 > dealer.out 2>&1 & 
+
+IPADDR=$(curl ifconfig.me)
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100    14  100    14    0     0    243      0 --:--:-- --:--:-- --:--:--   245
+
+echo $IPADDR
+129.170.65.170
+
+cd ../player ; ./player Name $IPADDR 8092
+Playing Match Result: RESULT WIN
+Playing Match Result: RESULT LOOSE
+Playing Match Result: RESULT LOOSE
+Playing Match Result: RESULT WIN
+Playing Match Result: RESULT WIN
+Playing Match Result: RESULT LOOSE
+Playing Match Result: RESULT WIN
+Playing Match Result: RESULT LOOSE
+Playing Match Result: RESULT WIN
+Playing Match Result: RESULT LOOSE
+Playing Match Result: RESULT LOOSE
+Playing Match Result: RESULT LOOSE
+Playing Match Result: RESULT WIN
+Playing Match Result: RESULT BUST
+Playing Match Result: RESULT LOOSE
+Playing Match Result: RESULT WIN
+Playing Match Result: RESULT LOOSE
+Playing Match Result: RESULT WIN
+Playing Match Result: RESULT PUSH
+Playing Match Result: RESULT BUST
+Playing Match Result: RESULT LOOSE
+Playing Match Result: RESULT LOOSE
+Playing Match Result: RESULT WIN
+Playing Match Result: RESULT LOOSE
+Playing Match Result: RESULT LOOSE
+Playing Match Result: RESULT LOOSE
+Playing Match Result: RESULT PUSH
+Playing Match Result: RESULT LOOSE
+Playing Match Result: RESULT LOOSE
+Playing Match Result: RESULT WIN
+Playing Match Result: RESULT PUSH
+Playing Match Result: RESULT WIN
+Playing Match Result: RESULT WIN
+Playing Match Result: RESULT WIN
+Playing Match Result: RESULT PUSH
+Playing Match Result: RESULT WIN
+Playing Match Result: RESULT LOOSE
+Playing Match Result: RESULT WIN
+Playing Match Result: RESULT BUST
+Playing Match Result: RESULT WIN
+Playing Match Result: RESULT WIN
+Playing Match Result: RESULT WIN
+Playing Match Result: RESULT LOOSE
+Playing Match Result: RESULT LOOSE
+Playing Match Result: RESULT PUSH
+Playing Match Result: RESULT WIN
+Playing Match Result: RESULT PUSH
+Playing Match Result: RESULT PUSH
+Playing Match Result: RESULT BUST
+Playing Match Result: RESULT LOOSE
+
+# test with provided dealer
+cd ../dealer ; ./dealer-given 1 50 8092 > ../player/dealer.out 2>&1 & 
+
+cd ../player ; ./player Name $IPADDR 8092
+Playing Match Result: RESULT LOOSE
+Playing Match Result: RESULT LOOSE
+Playing Match Result: RESULT LOOSE
+Playing Match Result: RESULT LOOSE
+Playing Match Result: RESULT BUST
+Playing Match Result: RESULT BUST
+Playing Match Result: RESULT LOOSE
+Playing Match Result: RESULT LOOSE
+Playing Match Result: RESULT BUST
+Playing Match Result: RESULT WIN
+Playing Match Result: RESULT WIN
+Playing Match Result: RESULT LOOSE
+Playing Match Result: RESULT LOOSE
+Playing Match Result: RESULT WIN
+Playing Match Result: RESULT LOOSE
+Playing Match Result: RESULT LOOSE
+Playing Match Result: RESULT WIN
+Playing Match Result: RESULT WIN
+Playing Match Result: RESULT WIN
+Playing Match Result: RESULT LOOSE
+Playing Match Result: RESULT WIN
+Playing Match Result: RESULT BUST
+Playing Match Result: RESULT WIN
+Playing Match Result: RESULT WIN
+Playing Match Result: RESULT PUSH
+Playing Match Result: RESULT BUST
+Playing Match Result: RESULT BUST
+Playing Match Result: RESULT WIN
+Playing Match Result: RESULT WIN
+Playing Match Result: RESULT LOOSE
+Playing Match Result: RESULT LOOSE
+Playing Match Result: RESULT WIN
+Playing Match Result: RESULT WIN
+Playing Match Result: RESULT WIN
+Playing Match Result: RESULT LOOSE
+Playing Match Result: RESULT LOOSE
+Playing Match Result: RESULT WIN
+Playing Match Result: RESULT WIN
+Playing Match Result: RESULT WIN
+Playing Match Result: RESULT WIN
+Playing Match Result: RESULT WIN
+Playing Match Result: RESULT WIN
+Playing Match Result: RESULT LOOSE
+Playing Match Result: RESULT WIN
+Playing Match Result: RESULT LOOSE
+Playing Match Result: RESULT LOOSE
+Playing Match Result: RESULT WIN
+Playing Match Result: RESULT WIN
+Playing Match Result: RESULT LOOSE
+Playing Match Result: RESULT WIN
