@@ -4,6 +4,8 @@
 
 See the course web site for [detailed description of the project](https://www.cs.dartmouth.edu/~tjp/cs50/project/index.html)
 
+This repo is a copy of the original private repo created by GitHub Classroom. In the project, 4 authors pushed 145 commits to main with 52 push requests. 16 branches were created. There were 12,990 additions and 7,972 deletions in total.
+
 ## Documentation
 
 [Requirements Specification](REQUIREMENTS.md)
