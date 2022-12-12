@@ -3,6 +3,16 @@
 
 See the course web site for [detailed description of the project](https://www.cs.dartmouth.edu/~tjp/cs50/project/index.html)
 
+### Documentation
+
+[Requirements Specification](REQUIREMENTS.md)
+
+[Design Specification](DESIGN.md)
+
+[Implementation Specification](IMPLEMENTATION.md)
+
+[Testing Specification](TESTING.md)
+
 ### Notes
 #### Training (# of Games)
 In our training, we were primarily limited by time. We also understood that the value of a specific index in the Q table wouldn't matter in playing beyond being greater or less than the opposite action for the same state. We saw that even just after 5,000 tests, the two states would not flip in terms of average reward. Since we had the ability to, however, we decided to run an approximately 1,000,000 extra games overnight. With the run time running <5 games per second, for the 7 hours, it probably got through around 100,000-125,000 games. Combined with other training done before it, we trainied around a total of 150,000 games probably. We hope this would eliminate any fluctuations between preference of one action over the other. Training was done on babylon1 server, so that is the IP address being used.
